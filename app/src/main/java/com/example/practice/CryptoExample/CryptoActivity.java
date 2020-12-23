@@ -1,26 +1,20 @@
-package com.example.practice;
+package com.example.practice.CryptoExample;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.DialogCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.OpenableColumns;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
+import com.example.practice.R;
 import com.example.practice.Utility.EncryptDecrypt;
 import com.example.practice.Utility.MyViewModel;
 import com.example.practice.Utility.UriUtils;
@@ -32,7 +26,6 @@ import com.karumi.dexter.listener.PermissionGrantedResponse;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.DialogOnAnyDeniedMultiplePermissionsListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.karumi.dexter.listener.single.DialogOnDeniedPermissionListener;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 import java.io.File;
@@ -60,7 +53,7 @@ public class CryptoActivity extends AppCompatActivity {
         View view=activityCryptoBinding.getRoot();
         setContentView(view);*/
 
-        activityCryptoBinding= DataBindingUtil.setContentView(this,R.layout.activity_crypto);
+        activityCryptoBinding= DataBindingUtil.setContentView(this, R.layout.activity_crypto);
         activityCryptoBinding.setMyVariable("Hello World");
         activityCryptoBinding.consoleView.setMovementMethod(new ScrollingMovementMethod());
          myViewModel = new ViewModelProvider(this).get(MyViewModel.class);

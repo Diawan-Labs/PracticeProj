@@ -1,4 +1,4 @@
-package com.example.practice;
+package com.example.practice.ForEdwin;
 
 import android.content.Context;
 import android.net.Uri;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.practice.R;
 
 import java.util.ArrayList;
 

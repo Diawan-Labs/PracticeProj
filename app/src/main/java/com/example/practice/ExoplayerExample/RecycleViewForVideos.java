@@ -1,4 +1,4 @@
-package com.example.practice;
+package com.example.practice.ExoplayerExample;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.practice.R;
 import com.example.practice.model.MediaObject;
 import com.example.practice.model.MyVideosList;
 import com.example.practice.model.Video;
@@ -18,7 +19,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,4 +1,4 @@
-package com.example.practice;
+package com.example.practice.ExoplayerExample;
 
 import android.view.View;
 import android.widget.ImageButton;
@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.practice.R;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.ui.StyledPlayerView;
 
