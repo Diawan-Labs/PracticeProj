@@ -1,7 +1,10 @@
 package com.example.practice;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -44,13 +47,78 @@ public class ImageRecyclerView extends AppCompatActivity {
                 .appendPath(resources.getResourceTypeName(R.drawable.ic_launcher_foreground))
                 .appendPath(resources.getResourceEntryName(R.drawable.ic_launcher_foreground))
                 .build();
+
+        ItemTouchHelper itemTouchHelper=new ItemTouchHelper(new ItemTouchHelper.Callback() {
+            @Override
+            public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+                final int dragFlags = ItemTouchHelper.UP | ItemTouchHelper.DOWN;
+                final int swipeFlags = ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT;
+                return makeMovementFlags(dragFlags, swipeFlags);
+            }
+            @Override
+            public boolean isLongPressDragEnabled() {
+                return true;
+            }
+
+            @Override
+            public boolean isItemViewSwipeEnabled() {
+                return true;
+            }
+
+            @Override
+            public void clearView(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
+                super.clearView(recyclerView, viewHolder);
+              //  viewHolder.itemView.setBackgroundColor(getResources().getColor(R.color.teal_200));
+            }
+
+            @Override
+            public void onSelectedChanged(@Nullable RecyclerView.ViewHolder viewHolder, int actionState) {
+                super.onSelectedChanged(viewHolder, actionState);
+                if (viewHolder != null && viewHolder.itemView != null) {
+                    if (actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
+                        viewHolder.itemView.setBackgroundColor(getResources().getColor(R.color.exo_gray));
+                    } else if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+                        viewHolder.itemView.setBackgroundColor(getResources().getColor(R.color.black));
+                    } else if (actionState == ItemTouchHelper.ACTION_STATE_IDLE) {
+                        viewHolder.itemView.setBackgroundColor(getResources().getColor(R.color.purple_700));
+                    }
+                }
+            }
+
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                Uri uri=uriArrayList.get(viewHolder.getAdapterPosition());
+                uriArrayList.remove(viewHolder.getAdapterPosition());
+                uriArrayList.add(target.getAdapterPosition(),uri);
+                myImageViewRecyclerAdapter.notifyDataSetChanged();
+                return true;
+            }
+
+            @Override
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                final int position = viewHolder.getAdapterPosition();
+                if (direction == ItemTouchHelper.LEFT || direction ==ItemTouchHelper.RIGHT){
+                    uriArrayList.remove(position);
+                  myImageViewRecyclerAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+       itemTouchHelper.attachToRecyclerView(recyclerViewForImages);
         Log.d(TAG,"uriInitialImage:"+uriInitialImage.toString());
+        myImageViewRecyclerAdapter = new MyImageViewRecyclerAdapter(uriArrayList, this);
+        recyclerViewForImages.setAdapter(myImageViewRecyclerAdapter);
+        recyclerViewForImages.addItemDecoration(new
+                DividerItemDecoration(this,
+                DividerItemDecoration.VERTICAL));
+
+
         uriArrayList.add(uriInitialImage);
         pickImagesButton.setOnClickListener(v -> {
             pickMultipleImages();
-            myImageViewRecyclerAdapter = new MyImageViewRecyclerAdapter(uriArrayList, this);
-            recyclerViewForImages.setAdapter(myImageViewRecyclerAdapter);
+
         });
+
+
     }
 
     private void pickMultipleImages() {
@@ -80,4 +148,5 @@ public class ImageRecyclerView extends AppCompatActivity {
             }
         }
     }
+
 }
