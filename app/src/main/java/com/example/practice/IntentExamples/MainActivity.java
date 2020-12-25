@@ -1,4 +1,4 @@
-package com.example.practice;
+package com.example.practice.IntentExamples;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +15,6 @@ import android.view.View;
 import com.example.practice.databinding.ActivityMainBinding;
 
 import java.io.File;
-import java.util.zip.Inflater;
 
 public class MainActivity extends AppCompatActivity {
 

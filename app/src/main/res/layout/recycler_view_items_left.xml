@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:layout_margin="8dp"
+    android:layout_gravity="left"
+    android:background="@drawable/left_side_shape"
+    android:foreground="?attr/selectableItemBackground"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/number_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+
+    <TextView
+        android:id="@+id/number_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="8dp"
+        android:visibility="gone"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="InWords"/>
+
+</LinearLayout>

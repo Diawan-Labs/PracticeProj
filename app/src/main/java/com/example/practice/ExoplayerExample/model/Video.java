@@ -1,4 +1,4 @@
-package com.example.practice.model;
+package com.example.practice.ExoplayerExample.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;

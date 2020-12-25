@@ -9,7 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.practice.R;
-import com.example.practice.model.MediaObject;
+import com.example.practice.ExoplayerExample.model.MediaObject;
 import com.google.android.exoplayer2.MediaItem;
 import com.google.android.exoplayer2.SimpleExoPlayer;
 

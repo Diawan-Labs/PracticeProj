@@ -8,9 +8,9 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.practice.R;
-import com.example.practice.model.MediaObject;
-import com.example.practice.model.MyVideosList;
-import com.example.practice.model.Video;
+import com.example.practice.ExoplayerExample.model.MediaObject;
+import com.example.practice.ExoplayerExample.model.MyVideosList;
+import com.example.practice.ExoplayerExample.model.Video;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
